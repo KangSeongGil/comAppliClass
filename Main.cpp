@@ -2,17 +2,19 @@
 // Created by 강성길 on 2016. 11. 28..
 //
 #include <iostream>
-#include "Frame.h"
+#include "HearFile/Frame.h"
+#include "HearFile/ExArray.h"
 
 int main() {
-    try {
-        Frame *f1 = new Frame;
-        Frame *f2 = new Frame[10];
+    ExArray<int> arr1(3);
+    ExArray<char> arr2(4);
+    ExArray<double> arr3(5);
 
-        delete f1;
-        delete[] f2;
-    }
-    catch (string msg) {
-        cout << "Error msg:" << msg << endl;
-    }
+    arr1.addData(2);
+    arr2.addData('A');
+    arr3.addData(32.12);
+
+    arr1.pritData();
+    arr2.pritData();
+    arr3.pritData();
 }
