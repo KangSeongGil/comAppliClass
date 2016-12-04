@@ -6,6 +6,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include "Word.h"
 
 using namespace std;
 
@@ -62,18 +63,52 @@ void stlMap() {
     map<string, int> m;
     m["seoul"] = 100;
     m["daegu"] = 120;
-    m["busan"] = 200;
 
-    cout<<"Train to Seoul = " << m["seoul"]<<" $ "<<endl;
-    cout<<"Train to Daegu = " << m["Deagu"]<<" $ "<<endl;
-    cout<<"Train to Busan = " << m["Busan"]<<" $ "<<endl;
+    cout << "Train to Seoul = " << m["seoul"] << " $ " << endl;
+    cout << "Train to Daegu = " << m["Deagu"] << " $ " << endl;
+    cout << "Train to Busan = " << m["Busan"] << " $ " << endl;
+}
+
+
+void wordTest() {
+    map<char, list<Word>> m;
+    list<Word> aList;
+    list<Word> bList;
+
+    aList.push_back(Word("apple"));
+    aList.push_back(Word("avoid"));
+    aList.push_back(Word("appear"));
+
+    bList.push_back(Word("bread"));
+    bList.push_back(Word("bring"));
+    bList.push_back(Word("bow"));
+
+    m['a'] = aList;
+    m['b'] = bList;
+
+    map<char, list<Word>>::iterator iter = m.begin();
+
+    while (iter != m.end()) {
+        cout << iter->first<<":"<<endl;
+
+        list<Word>::iterator iter_list = iter->second.begin();
+
+        for(;iter_list != iter->second.end();iter_list++≠) {
+            cout<<iter_list->getWord()<<endl;
+        }
+
+        cout << "\n====="<<endl;
+        iter++;
+    }
 }
 
 int main() {
-    stlList();
+
+    wordTest();
+    /*stlList();
     cout << "\n\n\n\n";
     stlVector();
     cout << "\n\n\n\n";
-    stlMap();
+    stlMap();*/
 }
 
